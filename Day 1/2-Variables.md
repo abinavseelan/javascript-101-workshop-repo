@@ -140,7 +140,7 @@ a[2]; // 30
 
 ### Functions
 
-Functions in Javascript are of type object as well. However, there is a small variation here. The `typeof` operator will return type `function` for a function. That is because functions are a subset of the `object` type. All functions are objects.
+Functions in Javascript are of type `object` as well. However, there is a small variation here. The `typeof` operator will return type `function` for a function. That is because functions are a subset of the `object` type. All functions are objects.
 
 ```javascript
 function a () {
@@ -152,6 +152,89 @@ console.log(a); // [Function a]
 a.b = 10;
 
 console.log(a); // { [Function a], b:10 }
+```
+
+## Coercion
+
+Coercion is the programming paradigm of type conversion. For example, when you're trying to print a value of type `number` using `console.log()`, the value would be converted to type `string`.
+
+Coercion in Javascript is of two types - implicit and explicit.
+
+An example of explicit coercion
+
+```javascript
+let a = 10;
+
+let b = String(10);
+
+console.log(b); // "10"
+typeof b; // string
+typeof a; // number
+```
+
+An example of implicit coercion
+
+```javascript
+let a = "10";
+let b =  a + 5; // a is coerced to number here.
+```
+
+### Task
+
+Boolean values are `true` and `false`. Find out what `string` and `number` values coerce to `true` and which ones coerce to `false`.
+
+## Copying variables
+
+In javascript, you can copy a variable by just assigning a new variable to an existing variable
+
+```javascript
+var a = 10;
+var b = a;
+
+console.log(b); // 10;
+```
+
+However, copying actually is of two types - deep and shallow copy. 
+
+### Deep Copy
+
+Let's explain this with an example. I create a variable `a`. `a` is assigned the value `10`. Now, when I create another variable `b` and assign it `a`, then the entire value of `a` is copied over to `b`. Another changes to `b` are will not change anything in `a` since the value has been completely copies over.
+
+```javascript
+var a = 10;
+var b = 10;
+
+console.log(a); // 10
+console.log(b); // 10
+
+b = 20;
+
+console.log(a); // 10
+console.log(b); // 20
+```
+
+### Shallow Copy
+
+Shallow copy occurs where two variables point to the same data location. For example, let's say we have a variable `a`. We assign a value of type `object` to it . The variable `a` will now point to a location in memory that houses the value. Now, when we create another variable `b` and assign it `a`, then instead of the entire value being copied over, only the reference to the data location is copied. 
+
+### Task
+
+What would happen here? :robot:
+
+```javascript
+var a = {
+    "hello": "world"
+};
+
+var b = a;
+
+console.log(a);
+console.log(b);
+
+b["foo"] = "bar";
+
+console.log(a);
+console.log(b);
 ```
 
 
